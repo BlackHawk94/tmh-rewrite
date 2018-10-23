@@ -8,4 +8,4 @@ websockets
 pyparsing
 psutil
 pytz
-discord
+discord.py
