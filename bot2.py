@@ -42,7 +42,7 @@ def join_game(game: Game, message: discord.Message) -> List[str]:
                 "Message ?join to join the game, "
                 "or ?start to start the game."]
     else:
-        await ctx.send ["You've already joined the game {}!".format(message.author.mention)]
+        return ["You've already joined the game {}!".format(message.author.mention)]
 
 # Starts a game, so long as one hasn't already started, and there are enough
 # players joined to play. Returns the messages the bot should say.
