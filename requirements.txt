@@ -1,5 +1,4 @@
 aiohttp
-git+https://github.com/BlackHawk94/discord.py@rewrite
 requests
 six
 smmap2
