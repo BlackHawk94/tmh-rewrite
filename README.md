@@ -1,3 +1,6 @@
-# tmh
+"" TMH BOT UNOFFICIAL ""
 
-A multipurpose bot for tmhack official server.
+Unofficial and under development bot for Tm-Hack :)
+integrated webhook
+integrated python2.7
+added python3.6 support
