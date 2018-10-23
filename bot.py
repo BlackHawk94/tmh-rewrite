@@ -243,4 +243,4 @@ async def uptime(ctx):
     days, hours = divmod(hours, 24)
     await ctx.send(f"{days}d, {hours}h, {minutes}m, {seconds}s")
 
-client.run(os.environ.get("TOKEN"))
+bot.run(os.environ.get("TOKEN"))
