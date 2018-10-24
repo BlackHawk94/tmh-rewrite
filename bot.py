@@ -155,6 +155,7 @@ async def help(ctx):
     embed.add_field(name="Fun", value="greet | cookie | coinflip | face | fist | tableflip | quotes", inline=False)
     embed.add_field(name="Info", value="avatar | userinfo | serverinfo", inline=False)
     embed.add_field(name="Utility", value="code | intro | suggest | report | uptime | ping ", inline=False)
+    embed.add_field(name="Poker", value="?help", inline=False)
     embed.add_field(name="eval", value="Executes python code", inline=False)
     embed.set_footer(text="As the bot is under development, so there may be some bugs in commands.)")
     await ctx.send(embed=embed)
