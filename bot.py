@@ -55,7 +55,7 @@ def dev_check(id):
 
 @bot.event
 async def on_ready():
-    bot.loop.create_task(status_task()) 
+#    bot.loop.create_task(status_task()) 
     print('Logged in as')
     print(bot.user.name)
     print(bot.user.id)
