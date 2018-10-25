@@ -45,13 +45,13 @@ def dev_check(id):
             return True
         return False
 
-@bot.event 
-async def status_task():
-    while True:
-        await bot.change_presence(activity=discord.Game(name='tmHack | -help'))
-        await asyncio.sleep(30)
-        await bot.change_presence(activity=discord.Activity(name='tmHack', type = discord.ActivityType.watching))
-        await asyncio.sleep(30)       
+#@bot.event 
+#async def status_task():
+#    while True:
+#        await bot.change_presence(activity=discord.Game(name='tmHack | -help'))
+#        await asyncio.sleep(30)
+#        await bot.change_presence(activity=discord.Activity(name='tmHack', type = discord.ActivityType.watching))
+#        await asyncio.sleep(30)       
 
 @bot.event
 async def on_ready():
