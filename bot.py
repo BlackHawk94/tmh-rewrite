@@ -66,9 +66,9 @@ name2 = "[tmHack]Server"
 async def rename(ctx, name):
     await bot.user.edit(username=name)
     await asyncio.sleep(20)
-    await bot.user.edit(username=name1)
+    await bot.user.edit(username=name)
     await asyncio.sleep(20)
-    await bot.user.edit(username=name2)
+    await bot.user.edit(username=name)
     await asyncio.sleep(20)
 
 @bot.event
