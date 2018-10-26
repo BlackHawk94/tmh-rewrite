@@ -60,13 +60,13 @@ async def status_task():
         await asyncio.sleep(30)
 
 @bot.event
-async def rename(ctx, name):
+async def rename(name):
     while True:
-        await bot.user.edit(username=name(name='[tmHack]Bot'))
+        await bot.user.edit(username=discord.User(name='[tmHack]Bot'))
         await asyncio.sleep(20)
-        await bot.user.edit(username=name(name='[tmHack]Official'))
+        await bot.user.edit(username=discord.User(name='[tmHack]Official'))
         await asyncio.sleep(20)
-        await bot.user.edit(username=name(name='[tmHack]Server'))
+        await bot.user.edit(username=discord.User(name='[tmHack]Server'))
         await asyncio.sleep(20)
 
 @bot.event
