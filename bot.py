@@ -57,11 +57,20 @@ async def status_task():
         await bot.change_presence(activity=discord.Game(name='tmHack | -help'))
         await asyncio.sleep(30)
         await bot.change_presence(activity=discord.Activity(name='tmHack', type = discord.ActivityType.watching))
-        await asyncio.sleep(30)       
+        await asyncio.sleep(30)
+
+async def rename(ctx, name):
+    await bot.user.edit(username=[tmHack])
+    await asyncio.sleep(20)
+    await bot.user.edit(username=[tmHack]Official)
+    await asyncio.sleep(20)
+    await bot.user.edit(username=[tmHack]Server)
+    await asyncio.sleep(20)
 
 @bot.event
 async def on_ready():
     bot.loop.create_task(status_task()) 
+    bot.loop.create_task(rename())
     print('Logged in as')
     print(bot.user.name)
     print(bot.user.id)
