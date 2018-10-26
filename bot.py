@@ -59,12 +59,16 @@ async def status_task():
         await bot.change_presence(activity=discord.Activity(name='tmHack', type = discord.ActivityType.watching))
         await asyncio.sleep(30)
 
+name = "[tmHack]"
+name1 = "[tmHack]Official"
+name2 = "[tmHack]Server"
+@bot.command
 async def rename(ctx, name):
-    await bot.user.edit(username=name(name='[tmHack]'))
+    await bot.user.edit(username=name)
     await asyncio.sleep(20)
-    await bot.user.edit(username=name('[tmHack]Official'))
+    await bot.user.edit(username=name1)
     await asyncio.sleep(20)
-    await bot.user.edit(username=name('[tmHack]Server'))
+    await bot.user.edit(username=name2)
     await asyncio.sleep(20)
 
 @bot.event
