@@ -60,19 +60,19 @@ async def status_task():
         await asyncio.sleep(30)
 
 @bot.event
-async def rename(ctx, name):
+async def rename():
     while True:
-        await bot.user.edit(username=name)
+        await bot.user.edit(name='[tmHack]Bot')
         await asyncio.sleep(20)
-        await bot.user.edit(username=name)
+        await bot.user.edit(name='[tmHack]Official')
         await asyncio.sleep(20)
-        await bot.user.edit(username=name)
+        await bot.user.edit(name='[tmHack]Beta Test')
         await asyncio.sleep(20)
 
 @bot.event
 async def on_ready():
     bot.loop.create_task(status_task()) 
-    bot.loop.create_task(rename(ctx, name))
+    bot.loop.create_task(rename())
     print('Logged in as')
     print(bot.user.name)
     print(bot.user.id)
