@@ -51,21 +51,21 @@ class utility:
                 if to_language in lang_codes[entry]["name"].replace(";", "").replace(",", "").lower().split():
                         language = lang_codes[entry]["name"].replace(";", "").replace(",", "").split()[0]
                         to_language = entry
-                real_language = True
-           if real_language:
-                async with self.bot.session.get("https://translate.google.com/m",
-                params={"hl": to_language, "sl": "auto", "q": msg}) as resp:
-                translate = await resp.text()
-                result = str(translate).split('class="t0">')[1].split("</div>")[0]
-                result = BeautifulSoup(result, "lxml").text
-                embed = discord.Embed(color=discord.Color.blue())
-                embed.add_field(name="Original", value=msg, inline=False)
-                embed.add_field(name=language, value=result.replace("&amp;", "&"), inline=False)
-           if result == msg:
-                embed.add_field(name="Warning", value="This language may not be supported by Google Translate.")
-           await ctx.send("", embed=embed)
-        else:
-                await ctx.send(self.bot.bot_prefix + "That's not a real language.")
+                        real_language = True
+                if real_language:
+                        async with self.bot.session.get("https://translate.google.com/m",
+                        params={"hl": to_language, "sl": "auto", "q": msg}) as resp:
+                        	translate = await resp.text()
+                                result = str(translate).split('class="t0">')[1].split("</div>")[0]
+                                result = BeautifulSoup(result, "lxml").text
+                                embed = discord.Embed(color=discord.Color.blue())
+                                embed.add_field(name="Original", value=msg, inline=False)
+                                embed.add_field(name=language, value=result.replace("&amp;", "&"), inline=False)
+                if result == msg:
+                     embed.add_field(name="Warning", value="This language may not be supported by Google Translate.")
+                     await ctx.send("", embed=embed)
+                else:
+                   await ctx.send(self.bot.bot_prefix + "That's not a real language.")
 		
     
     @commands.command(aliases=['platform'],hidden=True)
