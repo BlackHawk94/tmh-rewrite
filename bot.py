@@ -173,7 +173,7 @@ async def help(ctx):
 async def translate(self, ctx, to_language, *, msg):
     await ctx.message.delete()
     if to_language == "rot13":  # little easter egg
-	embed = discord.Embed(color=discord.Color.blue())
+        embed = discord.Embed(color=discord.Color.blue())
         embed.add_field(name="Original", value=msg, inline=False)
         embed.add_field(name="ROT13", value=codecs.encode(msg, "rot_13"), inline=False)
         return await ctx.send("", embed=embed)
