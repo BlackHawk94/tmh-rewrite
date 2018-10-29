@@ -13,6 +13,9 @@ from os import listdir
 from os.path import isfile, join
 import sys, traceback
 import textwrap
+import codecs
+import aiohttp
+from bs4 import BeautifulSoup
 
 def get_prefix(bot, message):
     prefixes = ['-']
@@ -165,6 +168,38 @@ async def help(ctx):
     embed.add_field(name="eval", value="Executes python code", inline=False)
     embed.set_footer(text="As the bot is under development, so there may be some bugs in commands.)")
     await ctx.send(embed=embed)
+
+@commands.command(pass_context=True)
+async def translate(self, ctx, to_language, *, msg):
+    await ctx.message.delete()
+    if to_language == "rot13":  # little easter egg
+	embed = discord.Embed(color=discord.Color.blue())
+        embed.add_field(name="Original", value=msg, inline=False)
+        embed.add_field(name="ROT13", value=codecs.encode(msg, "rot_13"), inline=False)
+        return await ctx.send("", embed=embed)
+    async with self.bot.session.get("https://gist.githubusercontent.com/astronautlevel2/93a19379bd52b351dbc6eef269efa0bc/raw/18d55123bc85e2ef8f54e09007489ceff9b3ba51/langs.json") as resp:
+        lang_codes = await resp.json(content_type='text/plain')
+    real_language = False
+    to_language = to_language.lower()
+    for entry in lang_codes:
+        if to_language in lang_codes[entry]["name"].replace(";", "").replace(",", "").lower().split():
+        language = lang_codes[entry]["name"].replace(";", "").replace(",", "").split()[0]
+	to_language = entry
+        real_language = True
+    if real_language:
+        async with self.bot.session.get("https://translate.google.com/m",
+            params={"hl": to_language, "sl": "auto", "q": msg}) as resp:
+            translate = await resp.text()
+        result = str(translate).split('class="t0">')[1].split("</div>")[0]
+        result = BeautifulSoup(result, "lxml").text
+        embed = discord.Embed(color=discord.Color.blue())
+        embed.add_field(name="Original", value=msg, inline=False)
+        embed.add_field(name=language, value=result.replace("&amp;", "&"), inline=False)
+        if result == msg:
+            embed.add_field(name="Warning", value="This language may not be supported by Google Translate.")
+        await ctx.send("", embed=embed)
+    else:
+        await ctx.send(self.bot.bot_prefix + "That's not a real language.")
 
 @bot.command(aliases=['fb'])
 async def feedback(ctx, *, msg):
