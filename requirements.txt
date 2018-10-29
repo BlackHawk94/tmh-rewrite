@@ -8,4 +8,4 @@ pyparsing
 psutil
 pytz
 discord.py
-BeautifulSoup
+BeautifulSoup4
