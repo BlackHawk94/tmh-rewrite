@@ -51,6 +51,11 @@ class fun:
             await ctx.send(embed=embed)
 
     @commands.command()
+    async def slap(self, member : discord.Member):
+        """<member>: Be careful with this one."""
+        await self.bot.say("*slaps {0} around a bit with a large, girthy trout*".format(member))
+
+    @commands.command()
     async def hug(self, ctx, *, user: discord.Member = None):
         if user != None:        
             if  member.id == ctx.message.author.id:
